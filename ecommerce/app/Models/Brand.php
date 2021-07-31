@@ -15,4 +15,11 @@ class Brand extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    //Relacion muchos a muchos
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    const BORRADOR = 1;
+    const PUBLICADO = 2;
     use HasFactory;
-    protected $fillable = ['name', 'slug', 'description', 'price', 'quantity', 'subcategory_id', 'brand_id'];
+    protected $fillable = ['name', 'slug', 'description', 'price', 'quantity', 'status', 'subcategory_id', 'brand_id'];
 
     //Relacion uno a muchos
     public function sizes()
@@ -31,7 +33,7 @@ class Product extends Model
 
     public function colors()
     {
-        return $this->hasMany(Color::class);
+        return $this->belongsToMany(Color::class);
     }
 
     //Relacion uno a muchos polimorfica
